@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teams Chat: Quick Reference Guide | Nebraska DOI M365</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap"></noscript>
+<style>
+  :root {
+    --navy: #003087;
+    --gold: #FFCD00;
+    --gold-dark: #c9a200;
+    --white: #ffffff;
+    --light: #f4f6fb;
+    --mid: #dce3f0;
+    --text: #1a1a2e;
+    --muted: #5a6a8a;
+    --teams-purple: #6264A7;
+    --teams-light: #e8e9f5;
+    --radius: 12px;
+    --shadow: 0 4px 24px rgba(0,48,135,0.10);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    background: var(--light);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 72px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .header-left { display: flex; align-items: center; gap: 1rem; }
+  .ne-seal {
+    height: 44px; width: auto; flex-shrink: 0; object-fit: contain; display: block; align-self: center;
+  }
+  .header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .header-title span { color: var(--gold); }
+  .header-badge {
+    background: var(--teams-purple);
+    color: var(--white);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  /* ── PROGRESS NAV ── */
+  .progress-nav {
+    background: var(--white);
+    border-bottom: 2px solid var(--mid);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 0 1rem;
+  }
+  .progress-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    gap: 2px;
+  }
+  .progress-nav a .nav-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--mid);
+    color: var(--muted);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700;
+    transition: all 0.2s;
+  }
+  .progress-nav a:hover { color: var(--navy); border-bottom-color: var(--mid); }
+  .progress-nav a:hover .nav-num { background: var(--navy); color: var(--white); }
+
+  /* ── SLIDES ── */
+  .slide {
+    min-height: calc(100vh - 112px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2rem;
+    position: relative;
+  }
+  .slide-inner { max-width: 960px; margin: 0 auto; width: 100%; }
+
+  /* Slide 1 – Hero */
+  .slide-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #002068 60%, #1a0050 100%);
+    color: var(--white);
+    text-align: center;
+    overflow: hidden;
+  }
+  .slide-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 30%, rgba(98,100,167,0.35) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+  .hero-title .accent { color: var(--gold); }
+  .hero-sub {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.82);
+    max-width: 560px;
+    margin: 1.2rem auto 0;
+    line-height: 1.5;
+  }
+  .hero-icon-row {
+    display: flex; justify-content: center; gap: 1.5rem;
+    margin-top: 2.5rem; flex-wrap: wrap;
+  }
+  .hero-pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    padding: 0.5rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .hero-pill svg { width: 16px; height: 16px; }
+
+  /* Slide 2 – What is Teams Chat */
+  .slide-light { background: var(--white); }
+  .slide-tinted { background: var(--light); }
+
+  .slide-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teams-purple);
+    margin-bottom: 0.5rem;
+  }
+  .slide-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1;
+    color: var(--navy);
+    margin-bottom: 1.5rem;
+  }
+  .slide-heading .gold { color: var(--gold-dark); }
+
+  /* Analogy box */
+  .analogy-box {
+    background: linear-gradient(135deg, var(--teams-purple), #4a4c8a);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .analogy-icon { font-size: 2rem; flex-shrink: 0; }
+  .analogy-text { font-size: 1.05rem; font-weight: 300; line-height: 1.6; }
+  .analogy-text strong { font-weight: 600; color: var(--gold); }
+
+  /* Feature grid */
+  .feat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .feat-card {
+    background: var(--light);
+    border: 1.5px solid var(--mid);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .feat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .feat-card .feat-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .feat-card h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+  .feat-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* Step list */
+  .step-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .step-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    border-left: 4px solid var(--teams-purple);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .step-num {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    min-width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-body h4 {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin-bottom: 0.2rem;
+  }
+  .step-body p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* Tip cards */
+  .tip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .tip-card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+  }
+  .tip-card .tip-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .tip-card h4 { font-weight: 600; font-size: 1rem; margin-bottom: 0.3rem; }
+  .tip-card p { font-size: 0.82rem; color: rgba(255,255,255,0.75); line-height: 1.5; }
+
+  /* Keyboard shortcuts table */
+  .shortcut-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+  .shortcut-table th {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1rem;
+    text-align: left;
+  }
+  .shortcut-table td {
+    padding: 0.6rem 1rem;
+    font-size: 0.88rem;
+    border-bottom: 1px solid var(--mid);
+    vertical-align: middle;
+  }
+  .shortcut-table tr:last-child td { border-bottom: none; }
+  .shortcut-table tr:nth-child(even) td { background: var(--light); }
+  kbd {
+    display: inline-block;
+    background: var(--mid);
+    border: 1px solid #b0bcd6;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: var(--navy);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Practice section */
+  .practice-banner {
+    background: var(--gold);
+    border-radius: var(--radius);
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .practice-banner .p-icon { font-size: 2rem; flex-shrink: 0; }
+  .practice-banner h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+  }
+  .practice-banner p { font-size: 0.9rem; color: #3a4a00; margin-top: 0.2rem; }
+
+  .challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  .challenge-card {
+    background: var(--white);
+    border: 2px solid var(--mid);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    position: relative;
+  }
+  .challenge-card .ch-badge {
+    position: absolute; top: -10px; left: 1rem;
+    background: var(--teams-purple);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+  .challenge-card h4 { font-weight: 600; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.3rem; margin-top: 0.3rem; }
+  .challenge-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+  .challenge-card .ch-check { margin-top: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+  .challenge-card .ch-check input[type=checkbox] { accent-color: var(--teams-purple); width: 16px; height: 16px; }
+  .challenge-card .ch-check label { font-size: 0.78rem; color: var(--muted); cursor: pointer; }
+
+  /* Outro */
+  .slide-outro {
+    background: linear-gradient(135deg, var(--navy), #001a5c);
+    color: var(--white);
+    text-align: center;
+  }
+  .outro-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .outro-title .gold { color: var(--gold); }
+  .outro-sub { font-size: 1rem; color: rgba(255,255,255,0.75); max-width: 480px; margin: 0.8rem auto 2rem; }
+  .outro-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+  .outro-link {
+    padding: 0.7rem 1.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .outro-link:hover { opacity: 0.85; }
+  .outro-link.primary { background: var(--gold); color: var(--navy); }
+  .outro-link.secondary { background: rgba(255,255,255,0.12); color: var(--white); border: 1px solid rgba(255,255,255,0.25); }
+
+  /* Teams help button */
+  .help-btn {
+    position: fixed;
+    bottom: 1.5rem; right: 1.5rem;
+    background: var(--teams-purple);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 0.65rem 1.2rem;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 0.5rem;
+    box-shadow: 0 4px 16px rgba(98,100,167,0.35);
+    text-decoration: none;
+    z-index: 200;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .help-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(98,100,167,0.45); }
+  .help-btn svg { width: 16px; height: 16px; }
+
+  /* Slide divider */
+  .slide-divider {
+    height: 4px;
+    background: linear-gradient(90deg, var(--teams-purple), var(--navy), var(--gold));
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .info-box {
+    background: var(--teams-light);
+    border-left: 4px solid var(--teams-purple);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 1rem 1.25rem;
+    margin-top: 1rem;
+  }
+  .info-box p { font-size: 0.88rem; color: var(--text); line-height: 1.6; }
+  .info-box strong { color: var(--teams-purple); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-left">
+    <img src="data:image/png;base64,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" alt="NDOI Logo" class="ne-seal">
+    <div class="header-title">Nebraska DOI &nbsp;|&nbsp; <span>M365 Guide Series</span></div>
+  </div>
+  <div class="header-badge">Teams Chat</div>
+</header>
+
+<!-- PROGRESS NAV -->
+<nav class="progress-nav" aria-label="Guide sections">
+  <a href="#hero"><div class="nav-num">1</div>Intro</a>
+  <a href="#what"><div class="nav-num">2</div>Overview</a>
+  <a href="#howto"><div class="nav-num">3</div>Getting Started</a>
+  <a href="#features"><div class="nav-num">4</div>Key Features</a>
+  <a href="#practice"><div class="nav-num">5</div>Practice!</a>
+  <a href="#outro"><div class="nav-num">6</div>Summary</a>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<section class="slide slide-hero" id="hero">
+  <div class="slide-inner">
+    <div class="hero-eyebrow">Nebraska Department of Insurance · M365 Guide Series</div>
+    <h1 class="hero-title">
+      Teams<br><span class="accent">Chat</span>
+    </h1>
+    <p class="hero-sub">Real-time messaging for individuals, groups, and teams — purpose-built to replace high-friction communication like reply-all email chains and unnecessary phone calls.</p>
+    <div class="hero-icon-row">
+      <div class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Send messages instantly
+      </div>
+      <div class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Chat history stays forever
+      </div>
+      <div class="hero-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Works for 1-on-1 or groups
+      </div>
+    </div>
+  </div>
+</section>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 2: WHAT IS IT? -->
+<section class="slide slide-light" id="what">
+  <div class="slide-inner">
+    <div class="slide-label">Slide 2 of 6 · Overview</div>
+    <h2 class="slide-heading">Persistent, threaded messaging<br>integrated across your <span class="gold">M365 workspace.</span></h2>
+
+    <div class="analogy-box">
+      <div class="analogy-icon">🏢</div>
+      <div class="analogy-text">
+        Teams Chat provides <strong>persistent, searchable messaging</strong> scoped to individuals, ad-hoc groups, or structured team channels. Unlike email, conversations are threaded, context is preserved, and files are co-located with the discussion that originated them.
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Two kinds of chat</h3>
+        <div class="feat-grid" style="grid-template-columns:1fr;">
+          <div class="feat-card">
+            <div class="feat-icon">💬</div>
+            <h4>Direct Message (DM)</h4>
+            <p>Private, persistent conversation between one or more individuals. Visible only to participants; ideal for focused discussion outside a channel context.</p>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">📣</div>
+            <h4>Channel Post</h4>
+            <p>A message posted to a shared team channel. Visible to all channel members; supports threaded replies and is the appropriate venue for team-wide communication.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.1rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Teams Chat vs. Email</h3>
+        <div class="step-list">
+          <li>
+            <span>⚡</span>
+            <div class="step-body">
+              <h4>Lower friction</h4>
+              <p>No subject lines, signatures, or threading overhead. Ideal for quick questions, status updates, and decisions that don't warrant a formal email.</p>
+            </div>
+          </li>
+          <li>
+            <span>🔍</span>
+            <div class="step-body">
+              <h4>Persistent, searchable history</h4>
+              <p>All messages are indexed and retrievable via search. Prior decisions, shared files, and context remain accessible without digging through email archives.</p>
+            </div>
+          </li>
+          <li>
+            <span>🧵</span>
+            <div class="step-body">
+              <h4>Threaded conversations</h4>
+              <p>Replies nest under the originating message, keeping related discussion contained and readable without fragmenting across inboxes.</p>
+            </div>
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 3: HOW TO CHAT -->
+<section class="slide slide-tinted" id="howto">
+  <div class="slide-inner">
+    <div class="slide-label">Slide 3 of 6 · Getting Started</div>
+    <h2 class="slide-heading">Initiating a conversation —<br><span class="gold">Direct Message or Channel.</span></h2>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Send a Direct Message</h3>
+        <ol class="step-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Select Chat in the left navigation rail</h4>
+              <p>Your recent conversations are listed here in reverse chronological order.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Click the compose (✏️) icon or + New Chat</h4>
+              <p>A recipient field appears at the top of the conversation pane.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Enter the recipient's name and compose your message</h4>
+              <p>Directory suggestions appear as you type. Select the recipient, enter your message, and press Enter to send.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div>
+        <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.75rem;">Post in a Channel</h3>
+        <ol class="step-list">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Select Teams in the left navigation rail</h4>
+              <p>Expand your team (e.g., DOI SHIP, IT Department) to reveal its channels.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Select the appropriate channel</h4>
+              <p>General serves as the default; purpose-specific channels exist for focused topics and workstreams.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Click New Conversation and compose</h4>
+              <p>Add a subject line for announcements or substantive posts — it aids searchability and sets context at a glance.</p>
+            </div>
+          </li>
+        </ol>
+        <div class="info-box">
+          <p><strong>Note:</strong> Always use <strong>Reply</strong> to respond within an existing thread rather than starting a new post. This keeps related content grouped and preserves conversation context.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 4: FEATURES -->
+<section class="slide slide-light" id="features">
+  <div class="slide-inner">
+    <div class="slide-label">Slide 4 of 6 · Key Features</div>
+    <h2 class="slide-heading">Core capabilities<br>worth <span class="gold">knowing well.</span></h2>
+
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">@</div>
+        <h4>@Mention someone</h4>
+        <p>Type <strong>@Name</strong> to trigger a targeted notification for that individual regardless of their current activity status. Use <strong>@channel</strong> to notify all channel members.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">😄</div>
+        <h4>React with emojis</h4>
+        <p>Hover over a message and select a reaction to acknowledge without generating a reply. Reduces notification noise for the recipient and keeps threads uncluttered.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📎</div>
+        <h4>Share files</h4>
+        <p>Attach files via the 📎 icon or paste a SharePoint/OneDrive link. Files are co-located with the conversation, versioned, and accessible to all participants.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🧵</div>
+        <h4>Reply in thread</h4>
+        <p>In channels, always use <strong>Reply</strong> — not a new post. Keeps conversations together and easy to follow.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🔔</div>
+        <h4>Mute notifications</h4>
+        <p>Right-click any chat or channel and select Mute to suppress notifications without leaving the conversation. Useful during deep-focus work sessions.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">⭐</div>
+        <h4>Pin important chats</h4>
+        <p>Right-click a conversation and select Pin to anchor it at the top of your chat list for fast access to high-priority threads.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);text-transform:uppercase;letter-spacing:0.05em;margin:1.5rem 0 0.75rem;">Keyboard Shortcuts</h3>
+    <table class="shortcut-table">
+      <thead>
+        <tr><th>Action</th><th>Shortcut</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>New chat</td><td><kbd>Ctrl</kbd> + <kbd>N</kbd></td><td>Opens the compose pane directly</td></tr>
+        <tr><td>Search</td><td><kbd>Ctrl</kbd> + <kbd>E</kbd></td><td>Searches messages, people, and files</td></tr>
+        <tr><td>New line (no send)</td><td><kbd>Shift</kbd> + <kbd>Enter</kbd></td><td>Insert a line break within a message</td></tr>
+        <tr><td>Edit last message</td><td><kbd>↑</kbd> (up arrow)</td><td>Opens the most recent sent message for editing</td></tr>
+        <tr><td>Go to team/channel</td><td><kbd>Ctrl</kbd> + <kbd>G</kbd></td><td>Direct navigation without sidebar traversal</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 5: PRACTICE -->
+<section class="slide slide-tinted" id="practice">
+  <div class="slide-inner">
+    <div class="slide-label">Slide 5 of 6 · Hands-On Practice</div>
+    <h2 class="slide-heading">Put it to use —<br><span class="gold">starting today.</span></h2>
+
+    <div class="practice-banner">
+      <div class="p-icon">🏋️</div>
+      <div>
+        <h3>Hands-on exercises to reinforce these workflows</h3>
+        <p>Complete these exercises to reinforce the key workflows covered in this guide:</p>
+      </div>
+    </div>
+
+    <div class="challenge-grid">
+      <div class="challenge-card">
+        <div class="ch-badge">Challenge 1</div>
+        <h4>Initiate a Direct Message</h4>
+        <p>Open a new DM to any colleague. A brief test message is sufficient — the goal is to confirm the send workflow.</p>
+        <div class="ch-check">
+          <input type="checkbox" id="c1"><label for="c1">Mark as done</label>
+        </div>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-badge">Challenge 2</div>
+        <h4>React to a message</h4>
+        <p>Hover over any channel message and apply a reaction. Note that reactions replace low-value acknowledgment replies and keep threads clean.</p>
+        <div class="ch-check">
+          <input type="checkbox" id="c2"><label for="c2">Mark as done</label>
+        </div>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-badge">Challenge 3</div>
+        <h4>@Mention someone</h4>
+        <p>In a channel reply, type @ followed by a colleague's name to trigger a targeted notification, regardless of their current notification settings.</p>
+        <div class="ch-check">
+          <input type="checkbox" id="c3"><label for="c3">Mark as done</label>
+        </div>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-badge">Challenge 4</div>
+        <h4>Pin a conversation</h4>
+        <p>Right-click a high-frequency conversation and select Pin to surface it at the top of your chat list permanently.</p>
+        <div class="ch-check">
+          <input type="checkbox" id="c4"><label for="c4">Mark as done</label>
+        </div>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-badge">Challenge 5</div>
+        <h4>Search for something</h4>
+        <p>Use Ctrl+E to search across messages, people, and files. Confirm that historical content is retrievable by searching a past topic.</p>
+        <div class="ch-check">
+          <input type="checkbox" id="c5"><label for="c5">Mark as done</label>
+        </div>
+      </div>
+      <div class="challenge-card">
+        <div class="ch-badge">Challenge 6</div>
+        <h4>Share a file</h4>
+        <p>Attach a file to any chat via the paperclip icon and confirm the recipient can access it. Files route through SharePoint automatically.</p>
+        <div class="ch-check">
+          <input type="checkbox" id="c6"><label for="c6">Mark as done</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-grid" style="margin-top:1.5rem;">
+      <div class="tip-card">
+        <div class="tip-label">💡 Good to Know</div>
+        <h4>Presence status</h4>
+        <p>Set your status to Do Not Disturb during focused work periods. Incoming messages are held without notification and remain accessible when you return.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-label">💡 Good to Know</div>
+        <h4>Edit &amp; delete</h4>
+        <p>Select the ··· menu on any sent message to edit content or delete it entirely. Edits are timestamped and visible to participants.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-label">💡 Good to Know</div>
+        <h4>Rich text formatting</h4>
+        <p>The formatting toolbar (A icon) supports bold, lists, code blocks, and inline tables — useful for structured updates and technical content.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="slide-divider"></div>
+
+<!-- SLIDE 6: OUTRO -->
+<section class="slide slide-outro" id="outro">
+  <div class="slide-inner">
+    <div class="hero-eyebrow">Quick Reference Complete</div>
+    <h2 class="outro-title">Chat with<br><span class="gold">confidence.</span></h2>
+    <p class="outro-sub">Teams Chat is NDOI's primary channel for real-time collaboration. Consistent adoption reduces email volume, preserves decision context, and keeps project communication centralized and searchable.</p>
+    <div class="outro-links">
+      <a href="https://lanceterrill.github.io/teams-meetings/" class="outro-link primary">Next: Teams Meetings →</a>
+      <a href="mailto:lance.terrill@nebraska.gov?subject=Teams%20Help" class="outro-link secondary">💬 Get Help from IT</a>
+      <a href="https://lanceterrill.github.io/" class="outro-link secondary">← Back to Guide Index</a>
+    </div>
+    <p style="margin-top:2.5rem;font-size:0.75rem;color:rgba(255,255,255,0.4);letter-spacing:0.04em;">Nebraska Department of Insurance · IT Division · M365 Guide Series</p>
+  </div>
+</section>
+
+<!-- HELP BUTTON -->
+<a href="mailto:lance.terrill@nebraska.gov?subject=Teams%20Chat%20Help" class="help-btn" title="Get help from IT">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  Teams Help
+</a>
+
+</body>
+</html>
